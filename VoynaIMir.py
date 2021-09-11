@@ -3,7 +3,7 @@ from collections import Counter
 import string
 alphabet = list('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')
 # From wikipedia: https://ru.wikipedia.org/wiki/%D0%A7%D0%B0%D1%81%D1%82%D0%BE%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C
-FrequencyOfLettersOg = list('оеаинтсрвлкмдпуяыьгзбчйхжшюцщэфёъ')
+FrequencyOfLettersOg = list('оеаинтсрвлкмдпуяыьгзбчйхжшюцщэфъё')
 
 
 
@@ -47,26 +47,19 @@ if __name__ == '__main__':
                 print("Введите ключ-слово:")
                 # key_word = input().lower()
                 # FOR QUICK TEST
-                key = 3
-                key_word = 'ключ'.lower()
+                key = 16
+                key_word = 'привет'.lower()
                 if caesarcipher.test_input_data(key_word, alphabet, key):
                     continue
                 # , encoding='utf-8'
-                with open("Documents/WarAndPeaceFull2.txt", "rt") as OgWarAndPeace:
+                with open("Documents/WarAndPeaceFULL1-4.txt", "rt") as OgWarAndPeace:
                     text = OgWarAndPeace.read().lower()
                     s = Counter("".join([ch for ch in text if ch in alphabet]))
-                    # Display OG War & Peace
-                    # print(f"\n----------------------------------------------------------------/"
-                    #       f"------------------------------------------------------------------------------------------------\n\n{text}")
-
                 with open("Documents/CaesarWarAndPeace.txt", "w") as CaesarWarAndPeace:
                     CaesarWarAndPeace.write(caesarcipher.caesar_encryption1(key, key_word, text, alphabet))
-                # Display CaesarCipher War & Peace
                 CaesarWarAndPeace = open("Documents/CaesarWarAndPeace.txt", "rt")
-                text2 = CaesarWarAndPeace.read()
-
-                FrequencyOfLetters = Counter("".join([ch for ch in text2 if ch in alphabet]))
-
+                text = CaesarWarAndPeace.read()
+                FrequencyOfLetters = Counter("".join([ch for ch in text if ch in alphabet]))
                 list_d = list(FrequencyOfLetters.items())
                 list_d.sort(key=lambda i: i[1])
                 list_d.reverse()
@@ -77,7 +70,7 @@ if __name__ == '__main__':
                 while len(FrequencyOfLetters2) != len(alphabet):
                     FrequencyOfLetters2.append('')
                 newtext = []
-                for i in text2:
+                for i in text:
                     if i in FrequencyOfLettersOg:
                         newtext.append(FrequencyOfLettersOg[FrequencyOfLetters2.index(i)])
                     else:
@@ -86,7 +79,7 @@ if __name__ == '__main__':
                 print(f"\nOUR Decoding text:\n{newtext}")
                 print("Как часто буквы встречались в оригинале:\t", str(s))
                 print("Как часто буквы встречались в шифре цезаря:\t", FrequencyOfLetters)
-                print(f"Заменяем буквы из шифра цезаря на:                     {'           '.join([i for i in FrequencyOfLettersOg])}")
+                print(f"Заменяем буквы из шифра цезаря на:                     {'            '.join([i for i in FrequencyOfLettersOg])}")
                 #     print(f"\n--------------------------------------------------------------/"
                 #           f"--------------------------------------------------------------------------------------------------\n\n{CaesarWarAndPeace.read()}")
                 CaesarWarAndPeace.close()
