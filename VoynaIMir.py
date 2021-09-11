@@ -52,7 +52,7 @@ if __name__ == '__main__':
                 if caesarcipher.test_input_data(key_word, alphabet, key):
                     continue
                 # , encoding='utf-8'
-                with open("Documents/WarAndPeaceFull2.txt.txt", "rt") as OgWarAndPeace:
+                with open("Documents/WarAndPeaceFull2.txt", "rt") as OgWarAndPeace:
                     text = OgWarAndPeace.read().lower()
                     s = Counter("".join([ch for ch in text if ch in alphabet]))
                     # Display OG War & Peace
@@ -86,7 +86,7 @@ if __name__ == '__main__':
                 print(f"\nOUR Decoding text:\n{newtext}")
                 print("Как часто буквы встречались в оригинале:\t", str(s))
                 print("Как часто буквы встречались в шифре цезаря:\t", FrequencyOfLetters)
-                print(f"Заменяем буквы из шифра цезаря на:                     {'         '.join([i for i in FrequencyOfLettersOg])}")
+                print(f"Заменяем буквы из шифра цезаря на:                     {'           '.join([i for i in FrequencyOfLettersOg])}")
                 #     print(f"\n--------------------------------------------------------------/"
                 #           f"--------------------------------------------------------------------------------------------------\n\n{CaesarWarAndPeace.read()}")
                 CaesarWarAndPeace.close()
