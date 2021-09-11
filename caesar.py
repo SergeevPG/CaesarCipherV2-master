@@ -19,7 +19,7 @@ def test_input_data(key_word, alphabet, key):
                 return 1
     return 0
 
-def caesar_encryption1(key, key_word, encrypt_message, alphabet):
+def caesar_encryption1(key, key_word, encrypt_message, alphabet, numProgram):
     key = int(key)
     key_word = list(key_word)
     encrypt_message = list(encrypt_message)
@@ -29,15 +29,18 @@ def caesar_encryption1(key, key_word, encrypt_message, alphabet):
         new_alphabet.pop(new_alphabet.index(i))
     # сдвиг массива и вставка ключ-слова
     new_alphabet = new_alphabet[-key:] + key_word + new_alphabet[:-key]
-    # print(f'\n::: Caesar Encryption v1.0 :::\n\nOriginal Alphabet:\t{alphabet}\nNew Alphabet:\t\t{new_alphabet}\nKey:\t\t{key}\nKey Word:\t{"".join(key_word)}')
-    # print(f"\nMessage:\t\t\t\n\"{"".join(encrypt_message)}\"")
+
+    if numProgram == 1:
+        print(f'\n::: Caesar Encryption v1.0 :::\n\nOriginal Alphabet:\t{alphabet}\nNew Alphabet:\t\t{new_alphabet}\nKey:\t\t{key}\nKey Word:\t{"".join(key_word)}')
+        print(f"\nMessage:\t\t\t\n\"{''.join(encrypt_message)}\"")
     for i in encrypt_message:
         if i in new_alphabet:
             new_word.append(new_alphabet[alphabet.index(i)])
         else:
             new_word.append(i)
     new_word = "".join(new_word)
-    # print(f'Encrypted message:\n\"{"".join(new_word)}\"\n\n::: Caesar Encryption v1.0 :::')
+    if numProgram == 1:
+        print(f'\nEncrypted message:\n\"{"".join(new_word)}\"\n\n::: Caesar Encryption v1.0 :::')
     return "".join(new_word)
 
 def caesar_encryption2(key_word, encrypt_message, alphabet):
