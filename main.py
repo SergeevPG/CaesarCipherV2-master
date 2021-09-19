@@ -1,6 +1,7 @@
 import caesar as caesarcipher
 from collections import Counter
 import re
+
 alphabet = list('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')
 # From wikipedia: https://ru.wikipedia.org/wiki/%D0%A7%D0%B0%D1%81%D1%82%D0%BE%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C
 FrequencyOfLettersOg = list('оеаинтсрвлкмдпуяыьгзбчйхжшюцщэфъё')
@@ -49,7 +50,6 @@ def coding(file):
     # Красивый вывод
     result(FrequencyOfLetters1, FrequencyOfLetters2)
 
-
     # Работа с биграммами
     beGramsOg = Counter(re.findall(r'(?=([а-я]{2}))', textOg)).most_common(10)
     OgBeGrams = []
@@ -71,17 +71,18 @@ def coding(file):
             OgBeGramsItem = list(OgBeGrams[i])
             for i in range(len(DecryptedBeGramsItem)):
                 if DecryptedBeGramsItem[i] != OgBeGramsItem[i]:
-                    if DecryptedBeGramsItem[i] not in DecryptedBeGramsList and DecryptedBeGramsItem[i] not in OgBeGramsList:
+                    if DecryptedBeGramsItem[i] not in DecryptedBeGramsList and DecryptedBeGramsItem[
+                        i] not in OgBeGramsList:
                         DecryptedBeGramsList.append(DecryptedBeGramsItem[i])
                     if OgBeGramsItem[i] not in DecryptedBeGramsList and OgBeGramsItem[i] not in OgBeGramsList:
                         OgBeGramsList.append(OgBeGramsItem[i])
     for i in range(len(DecryptedBeGramsList)):
         if DecryptedBeGramsList[i] != OgBeGramsList[i]:
             print(f"{DecryptedBeGramsList[i]} <-> {OgBeGramsList[i]}")
-            FrequencyOfLettersOg[FrequencyOfLettersOg.index(DecryptedBeGramsList[i])], FrequencyOfLettersOg[FrequencyOfLettersOg.index(OgBeGramsList[i])] = "EXP", DecryptedBeGramsList[i]
+            FrequencyOfLettersOg[FrequencyOfLettersOg.index(DecryptedBeGramsList[i])], FrequencyOfLettersOg[
+                FrequencyOfLettersOg.index(OgBeGramsList[i])] = "EXP", DecryptedBeGramsList[i]
             FrequencyOfLettersOg[FrequencyOfLettersOg.index("EXP")] = OgBeGramsList[i]
     print(f"Новый алфавит замены:\t{FrequencyOfLettersOg}")
-
 
     # Расшифровка с обновленным словарем
     textDecrypted2 = decryption(textEncrypted, FrequencyOfLetters2)
@@ -150,7 +151,8 @@ def enter():
 
 if __name__ == '__main__':
     while True:
-        print(f"\n:::\t\t\t\t\t\t:::\n1 - Шифр цезаря 1-й вариант\n2 - Шифр цезаря 2-й вариант\n3 - Частотный анализ\n4 - Выход\nВведите номер задачи:")
+        print(
+            f"\n:::\t\t\t\t\t\t:::\n1 - Шифр цезаря 1-й вариант\n2 - Шифр цезаря 2-й вариант\n3 - Частотный анализ\n4 - Выход\nВведите номер задачи:")
         program = input()
         if program.isdigit():
             program = int(program)
@@ -182,7 +184,9 @@ if __name__ == '__main__':
                     continue
                 string2 = caesarcipher.caesar_encryption2(key_word, word, alphabet)
             elif program == 3:
-                print("\nЧастотного анализа\n\n1 - Кодирование и Декодирование 1 Тома \"Война и Мир\" (worst decryption)\n2 - Кодирование и Декодирование 2 Тома \"Война и Мир\" (worst decryption)\n3 - Кодирование и Декодирование 3 Тома \"Война и Мир\" (best decryption)\n4 - Кодирование и Декодирование 4 Тома \"Война и Мир\"\n5 - Кодирование и Декодирование 1-4 Тома \"Война и Мир\"")
+                print(
+                    "\nЧастотного анализа\n\n1 - Кодирование и Декодирование 1 Тома \"Война и Мир\" (worst decryption)\n2 " \
+                    "- Кодирование и Декодирование 2 Тома \"Война и Мир\" (worst decryption)\n3 - Кодирование и Декодирование 3 Тома \"Война и Мир\" (best decryption)\n4 - Кодирование и Декодирование 4 Тома \"Война и Мир\"\n5 - Кодирование и Декодирование 1-4 Тома \"Война и Мир\"")
                 program3 = input()
                 if program3.isdigit():
                     program3 = int(program3)
